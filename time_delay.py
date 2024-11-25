@@ -1,6 +1,13 @@
-from passenger_data import *
-from fleet_data import *
+from TEAM_passenger_data import *
+from TEAM_fleet_data import *
+from daily_data import *
+import _config
 
+"""
+Finds how many passengers are late and sorts by flight
+
+chenj692, 2024
+"""
 
 def time_delay(fleet, passengers):
     """
@@ -17,6 +24,7 @@ def time_delay(fleet, passengers):
         is_late = True if plane[6] == "Late" else False
         plane_model = plane[0]
         for passenger in passengers:
+            # This file includes support for all three format types.
             if len(passenger[3]) == 1:  # eliminate possibility of v1 via checking if class is at index 3
                 format_locations = [passenger[2], passenger[4]]
             elif "-" not in passenger[3]:  # eliminate possibility of v2 by checking if dest. is at index 3
@@ -32,14 +40,14 @@ def time_delay(fleet, passengers):
     # return [[i[0], sum([i[6] == "Late" and [j[2], j[4]] == [i[4], i[5]] for j in passengers])] for i in fleet]
 
 if __name__ == "__main__":
-    print("Raw fleet data: ", fleet_data("fleet_data.txt"))
+    print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
     print("Raw passenger data (v1): ", passenger_data("passenger_data_v1.txt"))
-    print("Time delay count (should be the same for all three!)", time_delay(fleet_data("fleet_data.txt"), passenger_data("passenger_data_v1.txt")))
+    print("Time delay count (should be the same for all three!)", time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v1.txt")))
 
-    print("Raw fleet data: ", fleet_data("fleet_data.txt"))
+    print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
     print("Raw passenger data (v2): ", passenger_data("passenger_data_v2.txt"))
-    print("Time delay count (should be the same for all three!)", time_delay(fleet_data("fleet_data.txt"), passenger_data("passenger_data_v2.txt")))
+    print("Time delay count (should be the same for all three!)", time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v2.txt")))
 
-    print("Raw fleet data: ", fleet_data("fleet_data.txt"))
+    print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
     print("Raw passenger data (v3): ", passenger_data("passenger_data_v3.txt"))
-    print("Time delay count (should be the same for all three!)", time_delay(fleet_data("fleet_data.txt"), passenger_data("passenger_data_v3.txt")))
+    print("Time delay count (should be the same for all three!)", time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v3.txt")))
