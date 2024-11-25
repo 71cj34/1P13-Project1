@@ -1,8 +1,17 @@
+"""
+Adam Woods, woodsa18
+
+Code to see how many people are overweight, DS1
+"""
+
 from TEAM_passenger_data import *
 from TEAM_fleet_data import *
 import _config
 
 def overweight(passengerdata,fleetdata):
+    """
+    Checks how many passengers are over weight on all flights
+    """
     count=0
     count2 =0
     s=0
@@ -40,4 +49,5 @@ fleetdata = fleet_data(_config.fleet_data_path)
 passengerdata = passenger_data(_config.passenger_data_path)
 
 if __name__ == "__main__":
-    print(overweight(passengerdata,fleetdata))
+    for i in range(2):
+        print(overweight(passengerdata,fleetdata)[i])

@@ -40,14 +40,14 @@ def time_delay(fleet, passengers):
     # return [[i[0], sum([i[6] == "Late" and [j[2], j[4]] == [i[4], i[5]] for j in passengers])] for i in fleet]
 
 if __name__ == "__main__":
-    print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
-    print("Raw passenger data (v1): ", passenger_data("passenger_data_v1.txt"))
-    print("Time delay count (should be the same for all three!)", time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v1.txt")))
+    # print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
+    # print("Raw passenger data (v1): ", passenger_data("passenger_data_v1.txt"))
+    # print("Time delay count (should be the same for all three!)", time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v1.txt")))
 
     print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
     print("Raw passenger data (v2): ", passenger_data("passenger_data_v2.txt"))
     print("Time delay count (should be the same for all three!)", time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v2.txt")))
 
-    print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
-    print("Raw passenger data (v3): ", passenger_data("passenger_data_v3.txt"))
-    print("Time delay count (should be the same for all three!)", time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v3.txt")))
+    # print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
+    # print("Raw passenger data (v3): ", passenger_data("passenger_data_v3.txt"))
+    # print("Time delay count (should be the same for all three!)", time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v3.txt")))
