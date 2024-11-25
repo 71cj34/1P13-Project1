@@ -1,3 +1,9 @@
+"""
+Uses turtle to print out a summary of all the other airplane functions
+
+Thurs44, DS Project 1 ♡
+"""
+
 import _config
 from daily_data import *
 from oversold import *
@@ -6,8 +12,8 @@ from layover import *
 from TEAM_passenger_data import *
 from TEAM_fleet_data import *
 from time_delay import *
-
 import turtle as t
+
 t.setup(1500, 500)
 screen = t.Screen()
 screen.title("graphical_44")
@@ -16,13 +22,24 @@ t = t.Turtle()
 t.hideturtle()
 t.speed(0)
 
+# format for input lists
 # time_delay: [[model, # of lates], ...]
-# layover: [[model, # of layover], ...]
-# overweight: [[model, # of overweight], ...]
-# oversold: [[model, # of oversold (business)], ...]
+# layover: [[model, # of layover], ...] [0] only
+# overweight: [[model, # of overweight], ...] [0] only
+# oversold: [[model, # of oversold], ...] [0 and 1]
 
 def graphical_44(time_delay, layover, overweight, b_oversold, e_oversold):
-    concat_inputs = [time_delay, layover, overweight, b_oversold, e_oversold]
+    """
+    Prints out a graphical representation of the airplane functions
+
+    :param time_delay: 2D List of models, number of delayed passengers
+    :param layover: 2D List of models, number of layovers
+    :param overweight: 2D List of models, overweight passengers
+    :param b_oversold: 2D List of models, business class oversold seats
+    :param e_oversold: 2D List of models, economy class oversold seats
+    :return: None
+    """
+    concat_inputs = [time_delay, layover, overweight, b_oversold, e_oversold] # semi-elegant solution for list iteration
     concat_inputs_names = ["Time Delay", "Layover", "Overweight", "Business Oversold", "Economy Oversold"]
     if len(time_delay) == len(layover) == len(overweight) == len(b_oversold) == len(e_oversold):
         for i in range(len(time_delay)): # for every plane model
@@ -30,7 +47,7 @@ def graphical_44(time_delay, layover, overweight, b_oversold, e_oversold):
             coordinates = [-750 + 150*(i+1), 150] #x: 125 blocks 25 padding, y: 30 rect, 10 padding, 52 each x 5
             t.up()
             t.goto(coordinates[0], coordinates[1])
-            t.color("chartreuse")
+            t.color("chartreuse") # a whimsical color
             t.down()
             t.begin_fill()
             t.setheading(270)
@@ -53,9 +70,13 @@ def graphical_44(time_delay, layover, overweight, b_oversold, e_oversold):
             t.down()
             for j in range(0, len(concat_inputs)): # for every single input list
                 # plane_index = concat_inputs[j].index(current_model)
-                for k in range(len(concat_inputs[j])):
+                plane_index = None
+                for k in range(len(concat_inputs[j])): # trawl through every sublist in every list to find the plane model
                     if concat_inputs[j][k][0] == current_model:
                         plane_index = k
+                if plane_index == None: # just in case the model is not found
+                    raise ValueError(f"Model {current_model} could not be found in one or more input lists!")
+                # get value + its name
                 current_value = concat_inputs[j][plane_index][1]
                 current_value_name = concat_inputs_names[j]
                 t.write(arg=(str(current_value_name + ": " + str(current_value))))

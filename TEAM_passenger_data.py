@@ -1,3 +1,9 @@
+"""
+Converts a txt file of passenger data into a sanitized python 2D list
+
+Thurs44, DS Project 1
+"""
+
 def passenger_data(path):
     """
     Converts txt file of passenger data into a formatted python list object
