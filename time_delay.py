@@ -8,7 +8,6 @@ Finds how many passengers are late and sorts by flight
 
 chenj692, 2024
 """
-
 def time_delay(fleet, passengers):
     """
     Reads if a flight is delayed, and finds how many passengers are on that flight.
@@ -32,9 +31,10 @@ def time_delay(fleet, passengers):
             else:  # must be v3
                 format_locations = [passenger[3], passenger[5]]
             if format_locations == gate_destination:
-                if is_late:
+                if is_late and passenger[7] != "":
                     late_count += 1
         final_output.append([plane_model, late_count])
+
     return final_output
     # cursed codegolf version
     # return [[i[0], sum([i[6] == "Late" and [j[2], j[4]] == [i[4], i[5]] for j in passengers])] for i in fleet]
@@ -44,9 +44,10 @@ if __name__ == "__main__":
     # print("Raw passenger data (v1): ", passenger_data("passenger_data_v1.txt"))
     # print("Time delay count (should be the same for all three!)", time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v1.txt")))
 
-    print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
-    print("Raw passenger data (v2): ", passenger_data("passenger_data_v2.txt"))
-    print("Time delay count (should be the same for all three!)", time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v2.txt")))
+    # print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
+    # print("Raw passenger data (v2): ", passenger_data("passenger_data_v2.txt"))
+    print(time_delay(fleet_data(_config.fleet_data_path), passenger_data("passenger_data_v2.txt")))
+
 
     # print("Raw fleet data: ", fleet_data(_config.fleet_data_path))
     # print("Raw passenger data (v3): ", passenger_data("passenger_data_v3.txt"))
