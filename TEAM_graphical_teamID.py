@@ -40,11 +40,12 @@ def graphical_44(time_delay, layover, overweight, b_oversold, e_oversold):
     :return: None
     """
     concat_inputs = [time_delay, layover, overweight, b_oversold, e_oversold] # semi-elegant solution for list iteration
-    concat_inputs_names = ["Time Delay", "Layover", "Overweight", "Business Oversold", "Economy Oversold"]
+    concat_inputs_names = ["Late & Layovers", "Layovers", "Overweight", "Business Oversold", "Economy Oversold"]
     if len(time_delay) == len(layover) == len(overweight) == len(b_oversold) == len(e_oversold):
         for i in range(len(time_delay)): # for every plane model
             current_model = time_delay[i][0].strip()
             coordinates = [-750 + 150*(i+1), 150] #x: 125 blocks 25 padding, y: 30 rect, 10 padding, 52 each x 5
+            # Turtle writing script
             t.up()
             t.goto(coordinates[0], coordinates[1])
             t.color("chartreuse") # a whimsical color
@@ -79,7 +80,7 @@ def graphical_44(time_delay, layover, overweight, b_oversold, e_oversold):
                 # get value + its name
                 current_value = concat_inputs[j][plane_index][1]
                 current_value_name = concat_inputs_names[j]
-                t.write(arg=(str(current_value_name + ": " + str(current_value))))
+                t.write(arg=(str(current_value_name + ": " + str(current_value)))) # Write one element including title
                 t.up()
                 t.goto(coordinates[0], t.pos()[1] - 22)
     else:
