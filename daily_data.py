@@ -1,8 +1,7 @@
 """
 Laa1
 
-daily_data() function
-
+daily_data() function for DS1. Reads from passenger data, and outputs a summary of the data
 """
 
 from TEAM_passenger_data import *
@@ -32,7 +31,7 @@ import _config
 def daily_data(passengers):
     """
     Calculates the number of passengers boarding in Business (B) and Economy (E) classes for each day.
-
+    Takes list of passenger data as input and returns a list of gate and seats for B and E
     """
     daily_summary = [] #Initialize a list to hold daily data
 
