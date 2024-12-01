@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Nov  7 15:50:32 2024
+Madelaine Templeman
+400575355
 
-@author: madel
+This program accpets lists from functions passenger data, fleet data, and daily data to
+calculate the number of tickets in buisness and economy class that have been oversold.
+Two lists are returned with the plane and gates and oversold seats.
 """
 
 from TEAM_passenger_data import *
@@ -15,20 +18,13 @@ def oversold(passenger_list, fleet_list, daily_list):
     """
     Calculates how many oversold passengers are on each flight
     """
-    # plane model from fleet data [0]
-    # plane gate fleet data [4]
-    # number of b seats fleet data [1]
-    # number of e seats fleet data [2]
-    # b seats sold daily data [1]
-    # e seats sold daily data [2]
-
     oversold_business_seats = []
     oversold_economy_seats = []
 
     for sub_list in fleet_list:  # go through each list to find flight information required
         plane_model = sub_list[0]
         plane_gate = sub_list[4]
-        business_seats = int(sub_list[1])
+        business_seats = int(sub_list[1])#convert to integer values so math can be done with them
         economy_seats = int(sub_list[2])
 
         business_oversold = 0
